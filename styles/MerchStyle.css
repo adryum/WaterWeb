@@ -1,0 +1,236 @@
+* { /* star means to all elements */
+    margin: 0;
+}
+
+:root { /* here are all global variables */
+    --merch-item-border-radiuss: 24px;
+}
+
+.flex-grid {
+    /* content position */
+    display: flex;
+    justify-content: center; /* centers horizontally */
+    align-items: center; /* aligns each individually */
+    align-content: center; /* aligns all to the same axis */
+    gap: 20px;
+
+    /* special properties */
+    flex-wrap: wrap; /* allows content (buxes) to wrap when resized or overflowing */
+
+    /* other */
+    border: 8px solid black;
+    min-height: 80%;
+    padding: 20px;
+}
+.box {
+    /* decor */
+    width: 200px;
+    height: 200px;
+    background: rgba(23, 124, 255, 100);
+    font-size: 32px;
+
+    /* position in the box */
+    display: flex;
+    position: relative; /* is counted in composition and can be offcentered */
+    justify-content: center; /* centers horizontally */
+    align-items: center; /* centers vertically */
+    flex-direction: column; /* how content inside will be ordered */
+
+    /* special */
+    transition: 0.3s;
+    border-radius: var(--merch-item-border-radiuss);
+}
+.box:hover {
+    scale: 1.2;
+}
+/* stuff in the box */
+.item-image {
+    /* fits image in the box */
+    width: 100%;
+    height: 100%;
+
+    border-radius: var(--merch-item-border-radiuss);
+}
+.buttons {
+    display: flex;
+    justify-content: center; /* centers horizontally */
+    align-items: center; /* centers vertically */
+    
+    position: absolute; /* isn't counted in composition and looks back on parrent with absolute or relative position */
+    width: 100%;
+    height: 100%;
+
+    /* special */
+    opacity: 0;
+    transition: 0.3s;
+    border-radius: var(--merch-item-border-radiuss);
+}
+.buttons:hover {
+    backdrop-filter: brightness(90%) ;
+    opacity: 1;
+}
+.favorite {
+    width: 30px;
+    height: 30px;
+
+    margin: 12px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.purchase {
+    width: 150px;
+    height: 40px;
+
+    margin: 8px;
+    position: absolute;
+    bottom: 0;
+}
+
+/* headder stuff */
+header {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    max-height: 150px;
+    width: 100%;
+    z-index: 100; /* makes it to stay on top of everything else */
+}
+.header-menu {
+    display: flex;
+
+    width: 100%;
+    height: 100%;
+
+    font-family: sans-serif;
+    font-size: 36px;
+    background: rgba(255, 124, 120, 100);
+}
+img {
+    display: block;
+}
+.header-item {
+    height: 150px;
+}
+.categories {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+
+    width: 100%;
+    background: rgb(34, 37, 49);
+}
+.category-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    
+    list-style: none;
+    text-decoration: none;
+    transition: 0.3s;
+    color: black;
+}
+.category-item:hover {
+    color: rgb(75, 1, 120);
+    backdrop-filter: brightness(80%);
+}
+.hamburger-button {
+    display: none;
+}
+.hamburger-button .hamburger-style {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20%;
+    
+    width: 150px;
+    height: 150px;
+    border-radius: 12px;
+    background-color: rgb(34, 37, 49);
+    z-index: 100;
+}
+.hamburger-button .hamburger-style input {
+    position: absolute;
+    height: 150px;
+    width: 150px;
+    opacity: 0;
+}
+.hamburger-style div {
+    height: 15px;
+    width: 80%;
+    border-radius: 10000px;
+    background-color: aliceblue;
+}
+.hamburger-button:has(input:checked) .off-screen-menu{
+    left: 0;
+}
+.off-screen-menu {
+    padding-top: 150px;
+    background: rgb(34, 37, 49);
+    height: 100vh;
+    width: 100%;
+    max-width: 450px;
+    left: 0;
+    position: fixed;
+    left: -450px;
+
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    font-size: 3rem;
+    transition: .3s;
+    z-index: 99; /* makes it to stay on top of everything else */
+}
+.off-screen-menu a {
+    width: 90%;
+    color: black;
+    list-style: none;
+    text-decoration: none;
+}
+.off-screen-menu a:hover {
+    backdrop-filter: brightness(70%);
+}
+/* other */
+main {
+    margin-top: 150px;
+    display: flex;
+    justify-content: center;
+    max-height: 80%;
+    /* border: 8px solid white; */
+}
+
+body {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    flex-direction: column;
+    background: rgba(123, 150, 255, 100);
+}
+footer {
+    border: 8px solid yellow;
+}
+html {
+    height: 100%;
+}
+
+@media (max-width: 720px) {
+    .header-menu {
+        display: none;
+    }
+    main {
+        margin-top: 0px;
+    }
+    .hamburger-button {
+        display: flex;
+    }
+}
