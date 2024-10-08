@@ -4,31 +4,58 @@
 
 :root { /* here are all global variables */
     --merch-item-border-radiuss: 24px;
+    --body-color: ;
+    --html-color: ;
+    --header-color: rgb(113, 201, 206);
+    --main-color: rgb(227, 253, 253);
+    --footer-color: rgb(113, 201, 206);
+    --gamburger-color: rgb(113, 201, 206);
+    --other-color: rgb(234, 216, 177);
+    --text-color: rgb(0,0,0);
+    /* rgb(166, 227, 233) */
 }
 
 /* merch category stuff */
+#open-close-categories {
+    position: absolute;
+    top: 1;
+    right: -100px;
+    width: 100px;
+    height: 100px;
+
+    z-index: 10;
+}
+.merch-categories:has(input:checked) {
+    left: -340px;
+    position: absolute;
+}
 .merch-categories {
     display: flex;
+    position: relative;
     flex-direction: column;
     justify-items: left;
-    align-items: left;
 
     min-height: 100%;
-    min-width: 15%;
+    min-width: 300px;
+    
 
     padding: 20px;
     gap: 5px;
 
-    color: rgb(234, 216, 177);
-    background: rgb(67, 96, 110);
-
+    
+    color: var(--text-color);
+    background: var(--gamburger-color);
 }
 .merch-category-button {
     width: 100%;
     font-size: 28px;
+    transition: 0.3s;
+}
+.merch-category-button:hover {
+    backdrop-filter: brightness(80%);
 }
 .merch-categories input {
-    width: 100%;
+    width: 95%;
     height: 50px;
     border-radius: 8px;
 }
@@ -37,11 +64,12 @@
 /* center stuff */
 .title {
     font-size: 64px;
-    color: rgb(234, 216, 177);
-
+    color: var(--other-color);
 }
 .center-box {
+    display: flex;
     flex-direction: column;
+    align-items: center;
 }
 .flex-grid {
     /* content position */
@@ -60,9 +88,9 @@
 }
 .box {
     /* decor */
-    width: 200px;
-    height: 200px;
-    background: rgb(106, 154, 176);
+    width: 350px;
+    height: 400px;
+    background: var(--other-color);
     font-size: 32px;
 
     /* position in the box */
@@ -77,7 +105,8 @@
     border-radius: var(--merch-item-border-radiuss);
 }
 .box:hover {
-    scale: 1.2;
+    scale: 1.1;
+    z-index: 3; /* makes em move above others */
 }
 /* stuff in the box */
 .item-image {
@@ -124,23 +153,15 @@
 }
 
 /* headder stuff */
-header {
-    position: fixed;
+.pc-view {
     display: flex;
-    flex-direction: column;
-    max-height: 150px;
-    width: 100%;
-    z-index: 100; /* makes it to stay on top of everything else */
-}
-.header-menu {
-    display: flex;
+    align-items: center;
 
     width: 100%;
     height: 100%;
 
     font-family: sans-serif;
-    font-size: 36px;
-    background: rgba(255, 124, 120, 100);
+    font-size: 36px; 
 }
 img {
     display: block;
@@ -154,7 +175,6 @@ img {
     gap: 16px;
 
     width: 100%;
-    background: rgb(34, 37, 49);
 }
 .category-item {
     display: flex;
@@ -172,11 +192,22 @@ img {
     color: rgb(206, 170, 229);
     backdrop-filter: brightness(80%);
 }
-.hamburger-button {
-    display: none;
+.shoppingcart {
+    width: 150px;
+    height: 150px;
 }
-.hamburger-button .hamburger-style {
-    position: absolute;
+.phone-view {
+    display: none;
+    align-items: center;
+}
+.phone-view #searchbox {
+    width: 100%;
+    min-height: 80px;
+    margin: 12px;
+    border-radius: 16px;
+}
+.phone-view .gamburger-checkbox {
+    position: relative;
     top: 0;
     left: 0;
 
@@ -184,39 +215,39 @@ img {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 20%;
+    gap: 24px;
     
-    width: 150px;
-    height: 150px;
-    border-radius: 12px;
-    background-color: rgb(34, 37, 49);
+    min-width: 150px;
+    min-height: 150px;
+    background-color: var(--gamburger-color);
     z-index: 100;
 }
-.hamburger-button .hamburger-style input {
+.phone-view .gamburger-checkbox #real-gamburger-checkbox {
     position: absolute;
-    height: 150px;
-    width: 150px;
+    width: 100%;
+    min-height: 100%;
     opacity: 0;
 }
-.hamburger-style div {
+.gamburger-line { /* div-lines to make gamburger icon */
     height: 15px;
     width: 80%;
-    border-radius: 10000px;
+    border-radius: 7.5px; /* half length for round corners*/
     background-color: aliceblue;
 }
-.hamburger-button:has(input:checked) .off-screen-menu{
+.phone-view:has(input:checked) .off-screen-menu{
     left: 0;
 }
 .off-screen-menu {
-    padding-top: 150px;
-    background: rgb(34, 37, 49);
+    background: var(--gamburger-color);
     height: 100vh;
     width: 100%;
     max-width: 450px;
     left: 0;
     position: fixed;
+    top: 152px; /* places it bellow header */
     left: -450px;
 
+    filter: brightness(95%);
     display: flex;
     gap: 10px;
     flex-direction: column;
@@ -237,38 +268,53 @@ img {
     backdrop-filter: brightness(70%);
 }
 /* other */
+header {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    max-height: 150px;
+    width: 100%;
+    z-index: 100; /* makes it to stay on top of everything else */
+    background: var(--header-color);
+}
 main {
     margin-top: 150px;
     display: flex;
     justify-content: center;
     max-height: 80%;
+    background: var(--main-color);
     /* border: 8px solid white; */
 }
-
 body {
     display: flex;
     justify-items: center;
     align-items: center;
     flex-direction: column;
-    background: rgb(58, 109, 140);
+    background: var(--body-color);
 }
 footer {
     height: 100%;
     width: 100%;
-    background: rgb(0, 31, 63);
+    background: var(--footer-color);
 }
 html {
     height: 100%;
 }
 
-@media (max-width: 720px) {
-    .header-menu {
+/* general/default stuff */
+.hover-brightness:hover {
+    transition: 0.3s;
+    backdrop-filter: brightness(90%);
+}
+
+@media (max-width: 960px) {
+    .pc-view {
         display: none;
     }
-    main {
-        margin-top: 0px;
+    .merch-categories {
+        display: none;
     }
-    .hamburger-button {
+    .phone-view {
         display: flex;
     }
 }
