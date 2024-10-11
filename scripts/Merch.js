@@ -22,3 +22,23 @@ function showMeModalDescription(name, description) {
     pinkShit.children[1].innerHTML = description;
     console.log(name, description);
 }
+
+let root = document.querySelector(':root');
+
+let checkbox = document.querySelector("input[id=dark-mode]");
+
+checkbox.addEventListener('change', function() {
+  if (this.checked) {
+    root.style.setProperty('--gamburger-color', '#0F4C75');
+    root.style.setProperty('--footer-color', '#3282B8');
+    root.style.setProperty('--header-color', '#3282B8');
+    root.style.setProperty('--main-color', '#1B262C');
+    root.style.setProperty('--text-color', '#BBE1FA');
+  } else {
+    root.style.setProperty('--gamburger-color', '#71C9CE');
+    root.style.setProperty('--footer-color', '#71C9CE');
+    root.style.setProperty('--header-color', '#71C9CE');
+    root.style.setProperty('--main-color', '#E3FDFD');
+    root.style.setProperty('--text-color', '#000000');
+  }
+});

@@ -15,6 +15,11 @@
     /* rgb(166, 227, 233) */
 }
 
+#dark-mode {
+    min-width: 120px;
+    min-height: 120px;
+}
+
 
 #modal {
     display: none;
