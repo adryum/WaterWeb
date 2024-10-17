@@ -1,6 +1,6 @@
 let root = document.querySelector(':root');
 
-// Left side bar
+// Left side bar - pc and phone view
 let shownSidebar = true;
 let sidebar = document.querySelector("#sidebar");
 let phoneSidebar = document.querySelector("#phone-sidebar");
