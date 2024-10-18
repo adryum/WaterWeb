@@ -53,14 +53,14 @@ a {
 .dropdown {
     position: relative;
 }
-.dropdown:hover dropdown-block {
+.dropdown:hover > dropdown-block {
     visibility: visible;
     height: 200px;
     color: aliceblue;
 }
 dropdown-block {
-    position: absolute;
     display: flex;
+    position: absolute;
     flex-direction: column;
     
     top: 100%;
@@ -73,15 +73,20 @@ dropdown-block {
     background-color: var(--dropdown-color);
     transition: 0.3s ease;
 }
-.dropdown div {
+dropdown-block > div {
     display: flex;
 
     align-items: center;
     justify-content: center;
     height: 100%;
 }
-.dropdown div:hover {
+dropdown-block > div:hover {
     backdrop-filter: brightness(180%);
+}
+dropdown-block > div > a {
+    position: absolute;
+    width: 100%;
+    height: 100px;
 }
 /* Headers */
 header {
@@ -109,7 +114,7 @@ bottom-header {
 
     background: linear-gradient(rgba(0, 0, 0, 1), rgb(17 17 17) 10%, rgb(17 17 17) 95%, rgba(0, 0, 0, 1));
 }
-bottom-header a {
+bottom-header > * {
     display: flex;
     width: 100%;
     height: 100%;
@@ -119,7 +124,7 @@ bottom-header a {
 
     transition: .3s;
 }
-bottom-header a:hover {
+bottom-header > *:hover {
     color: aquamarine;
     backdrop-filter: brightness(180%);
 }
