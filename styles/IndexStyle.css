@@ -3,8 +3,13 @@
 }
 :root {
     --dark-black: rgb(17 17 17);
+    
+    --map-container-flex: 3;
+    --sidebar-container-flex: 1;
+
 }
 html {
+    display: flex;
     height: 100%;
 }
 img {
@@ -30,7 +35,7 @@ top-header {
 
     height: 60px;
     color: aliceblue;
-    background: linear-gradient(var(--dark-black) 90%, rgba(0, 0, 0, 1));
+    /* background: linear-gradient(var(--dark-black) 90%, rgba(0, 0, 0, 1)); */
     background: var(--dark-black);
 }
 bottom-header {
@@ -55,19 +60,75 @@ bottom-header a:hover {
     backdrop-filter: brightness(180%);
 }
 /* Body */
-speech-container {
-    display: block;
-    margin-bottom: 20px;
+content-container {
+    display: flex;
+    flex-direction: column;
 
-    color: transparent;
-    font-size: 3vw;
+    width: 100%;
+    height: 50vw;
 
-    max-width: 80%;
+    color: aliceblue;
+    background-color: rgba(30, 30, 30, 0.95);
+}
+informational-hud {
+    display: flex;
+    flex: 0.1;
+
+    background: linear-gradient(var(--dark-black) 90%, rgba(0, 0, 0, 1));
+}
+second-container {
+    display: flex;
+    flex: 1;
+}
+map-container {
+    display: flex;
+    flex: var(--map-container-flex);
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
 
-    background: linear-gradient(rgb(18, 137, 228), red);
-    background-clip: text;
-    background-color: rgba(139, 139, 139, 0.5);
+    font-size: 100px;
+
+    color: rgba(238, 148, 30, 0.91);
+    background-color: rgba(250, 235, 215, 0.384);
+}
+map-hud {
+    display: flex;
+    flex: var(--map-container-flex);
+}
+.title {
+    display: flex;
+    flex: 5;
+    align-items: center;
+
+    margin-left: 12px;
+    font-size: 32px;
+}
+right-sidebar {
+    display: flex;
+    flex: var(--sidebar-container-flex);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    color: rgba(250, 235, 215, 0.497);
+}
+sidebar-hud {
+    display: flex;
+    flex: var(--sidebar-container-flex);
+}
+.hud-button {
+    display: flex;
+    flex: 1;
+
+    align-items: center;
+    justify-content: center;
+    
+    transition: .3s;
+}
+.hud-button:hover {
+    backdrop-filter: brightness(180%);
+    color: bisque;
 }
 footer {
     display: flex;
@@ -88,16 +149,16 @@ footer h3 {
     justify-content: center;
 }
 body {
-    display: block;
-    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }
 main {
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
+    flex: 1;
 
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding: 10px;
 
     background-color: rgba(30, 30, 30, 0.95);
 }
