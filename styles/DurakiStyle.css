@@ -25,6 +25,41 @@ hud {
     width: 100%;
     height: 100%;
 }
+cards-on-the-field {
+    position: absolute;
+    display: flex;
+
+    left: 0;
+
+    width: 600px;
+    height: 400px;
+
+    background-color: rgba(255, 228, 196, 0.4);
+    z-index: 10;
+}
+cards-on-the-field > * {
+    /* display: flex; */
+
+
+    width: 200px;
+    height: 400px;
+}
+selected-card {
+    position: absolute;
+    display: flex;
+
+    right: 0;
+
+    width: 300px;
+    height: 400px;
+
+    background-color: rgba(255, 228, 196, 0.4);
+    z-index: 10;
+}
+selected-card > * {
+    width: 100%;
+    height: 100%;
+}
 main {
     flex: 1;
     display: flex;
@@ -41,6 +76,78 @@ start-game {
     height: 100%;
 
     background-color: aquamarine;
+}
+/* Card field */
+battle-grid {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    width: 80%;
+    height: 50%;
+
+    background-color: red;
+
+    transform: 
+        translateY(50%)
+        translateX(0%);
+}
+battle-grid > fighter-cards {
+    /* Add a placeholder defender card when attacker places his card, so aligners wouldnt crash */
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+
+    justify-content: center;
+    align-items: end;
+
+    gap: 20px;
+
+    width: 100%;
+    height: 100%;
+
+    transition: .5s;
+}
+battle-grid > * > * {
+    width: 70px;
+    height: 100px;
+}
+fighter-cards:hover {
+    transform: translateZ(1000px);
+}
+fighter-cards {
+    background-color: rgba(199, 149, 149, 0.661);
+    z-index: 1;
+}
+/* Cards on the field */
+fighter-cards > fighter {
+    transition: .5s;
+    transform: rotateZ(-10deg);
+}
+fighter {
+    display: flex;
+}
+dead-cards {
+    display: flex;
+
+    width: 100%;
+    height: 100%;
+}
+dead-fighter {
+    display: flex;
+}
+dead-cards > * {
+    position: absolute;
+    transition: .5s;
+}
+dead-defender {
+    display: flex;
+}
+dead-fighter > * {
+    transform: rotateZ(-10deg);
+}
+dead-defender > * {
+    transform: rotateZ(10deg);
 }
 /* Oponent */
 oponent2 {
@@ -60,7 +167,7 @@ oponent2 {
         translateY(100px)
         translateZ(0.9px);
 }
-player-cards {
+player-hand-cards {
     display: flex;
     position: absolute;
 
@@ -79,30 +186,34 @@ player-cards {
     background-color: burlywood;
     transition: .3s;
 }
-player-cards:hover {
+player-hand-cards:hover {
     bottom: 0px;
 }
-player-cards > img {
+hand-card {
     position: relative;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
 
     font-size: 100px;
 
-    width: 100%;
+    width: 300px;
+    height: 100%;
 
     bottom: 0;
+    background: rgb(23,23,23);
     transition: .5s;
 }
-player-cards > img:hover {
+player-hand-cards > hand-card:hover {
     bottom: 90px;
     background-color: aquamarine;
+}
+hand-card > img {
+    width: inherit;
+    height: inherit;
 }
 card-deck {
     position: absolute;
     display: block;
+    
     width: 300px;
     height: 300px;
 
@@ -143,10 +254,12 @@ game-table {
     background-color: hsl(26, 62%, 40%);
     left: 50%;
 
+    transition: .5s;
+
     perspective: 200px;
     transform:
         translate(-50%)
-        rotateX(25deg);
+        rotateX(15deg);
 }
 table-center {
     display: flex;

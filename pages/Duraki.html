@@ -16,6 +16,8 @@
     <main>
         <!-- Graphical table -->
          <design>
+            <selected-card></selected-card>
+            <cards-on-the-field></cards-on-the-field>
              <game-table>
                 <oponent1></oponent1>
                 <oponent2></oponent2>
@@ -23,18 +25,24 @@
                 <card-stack></card-stack>
                 <front-side></front-side>
                 <table-center></table-center>
+                <!-- functionality -->
+                <battle-grid>
+                    <fighter-cards>
+                        <fighter id="DIA2"><img src="/images/cards/dia2.png"></fighter>
+                        
+                    </fighter-cards>
+                    <dead-cards>
+                        <!-- one on top, another bellow -->
+                        <dead-fighter></dead-fighter>
+                        <dead-defender></dead-defender>
+                    </dead-cards>
+                </battle-grid>
              </game-table>
 
-             <player-cards>
-                <img src="/images/cards/dim2.png">
-                <img src="/images/cards/spa7.png">
-                <img src="/images/cards/dim3.png">
-                <img src="/images/cards/dimQ.png">
-                <img src="/images/cards/dimJ.png">
-                <img src="/images/cards/hea10.png">
-                <img src="/images/cards/kle2.png">
-                <img src="/images/cards/kleA.png">
-            </player-cards>
+             <player-hand-cards>
+
+                
+            </player-hand-cards>
          </design>
         <!-- <card-deck> -->
 
