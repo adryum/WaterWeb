@@ -10,6 +10,8 @@
     --text-color: rgb(240, 248, 255);
 
     --alpha4: rgba(0,0,0, 0.4);
+
+    --hover-brightness: 180%;
     
     --map-container-flex: 3;
     --sidebar-container-flex: 1;
@@ -124,7 +126,7 @@ dropdown-block > div {
     height: 100%;
 }
 dropdown-block > div:hover {
-    backdrop-filter: brightness(180%);
+    backdrop-filter: brightness(var(--hover-brightness));
 }
 dropdown-block > div > a {
     position: absolute;
@@ -173,7 +175,7 @@ bottom-header > * {
 }
 bottom-header > *:hover {
     color: aquamarine;
-    backdrop-filter: brightness(180%);
+    backdrop-filter: brightness(var(--hover-brightness));
 }
 /* Body */
 content-container {
@@ -244,7 +246,7 @@ sidebar-hud {
     transition: .3s;
 }
 .hud-button:hover {
-    backdrop-filter: brightness(180%);
+    backdrop-filter: brightness(var(--hover-brightness));
     color: bisque;
 }
 footer {
