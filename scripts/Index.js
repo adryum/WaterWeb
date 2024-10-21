@@ -1,25 +1,12 @@
 let root = document.querySelector(':root');
 
-// Dropdown
-// let dropdownBlock = document.querySelector('dropdown-block'); // Stuff that holds all childrennnn
-// // let dropdownBlock = document.getElementsByTagName('dropdown-block');
-// // dropdownBlock.focus();
-// document.querySelectorAll(".dropdown").forEach(dropdown => {
-//     let rect = dropdown.getBoundingClientRect();
-//     console.log(rect.top, rect.right, rect.bottom, rect.left);
-
-    
-   
-
-//     dropdown.addEventListener("focusin", () => {
-//         dropdownBlock.style.display = 'flex';
-//         dropdownBlock.style.width = (rect.right - rect.left) + 'px';
-//         dropdownBlock.style.left = rect.left + 'px';
-//         dropdownBlock.style.top = rect.bottom + 'px';
-//     });
-
-//     dropdown.addEventListener("focusout", () => {
-//         dropdownBlock.style.display = 'none';
-//         dropdownBlock.style.width = (20) + 'px';
-//     });
-// });
+let darkMode = true;
+document.querySelector('dark-mode').addEventListener('click', () => {
+    darkMode = !darkMode;
+    root.style.setProperty('--light-dark-color', darkMode? 'rgb(17 17 17)' : '#F9F9F9');
+    root.style.setProperty('--mid-dark-color', darkMode? 'rgb(13, 13, 13)' : '#F9F9F9');
+    root.style.setProperty('--dark-dark-color', darkMode? 'rgb(0,0,0)' : '#212121');
+    root.style.setProperty('--dropdown-color', darkMode? 'rgb(30, 30, 30)' : '#212121');
+    root.style.setProperty('--main-color', darkMode? 'rgb(41, 41, 41)' : '#F9F9F9');
+    root.style.setProperty('--text-color', darkMode? 'rgb(240, 248, 255)' : 'rgb(0,0,0)');
+});
