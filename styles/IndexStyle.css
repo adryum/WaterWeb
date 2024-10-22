@@ -65,23 +65,42 @@ support {
 }
 split-container {
     display: flex;
+    flex-direction: row;
+    /* flex-wrap: wrap; */
+
+    align-items: center;
+    justify-content: center;
+
     width: 90%;
-    height: 90%;
     gap: 20px;
 
+    padding: 20px;
+    box-sizing: border-box;
     
     color:var(--text-color);
     background: var(--alpha4);
     border-radius: 28px;
 }
+split-container-text-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+
+    width: 100%;
+    height: 100%;
+    flex: 1;
+}
 split-container img {
-    aspect-ratio: 16/9;
     max-width: 50%;
-    border-radius: 28px 0px 28px;
+    aspect-ratio: 16/9;
+    flex: 1;
+    border-radius: 28px;
 }
 split-container p {
     display: flex;
-    align-items: center;
+    text-align: center;
     font-size: 2vw;
 }
 html {
@@ -283,4 +302,93 @@ main {
 
     background-color: var(--main-color);
     z-index: -1;
+}
+phone-header {
+    position: fixed;
+    display: none;
+
+    justify-content: space-between;
+
+    bottom: 0;
+    height: 100px;
+    width: 100%;
+    background: linear-gradient(var(--dark-dark-color), var(--light-dark-color) 10%);
+
+    z-index: 5;
+}
+phone-header > dark-mode {
+    min-width: 100px;
+    height: 100px;
+}
+phone-header > input {
+    min-width: 50%;
+    height: 80px;
+    align-self: center;
+}
+off-screen-menu {
+    position: fixed;
+    display: none;
+    flex-direction: column;
+
+    right: -100%;
+    gap: 20px;
+
+    width: 90%;
+    height: 100%;
+
+    background: var(--dropdown-color);
+    transition: .5s;
+    color: var(--text-color);
+    padding: 20px;
+    box-sizing: border-box;
+    padding-bottom: 100px;
+
+    font-size: 50px;
+}
+navigation-options {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+navigation-options > * {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    height: 100%;
+    width: 100%;
+    font-size: 30px;
+}
+navigation-options > *:hover {
+    backdrop-filter: brightness(var(--hover-brightness));
+}
+
+@media (max-width: 960px) {
+    split-container {
+        flex-direction: column;
+    }
+    split-container > * {
+        min-width: 100%;
+    }
+    split-container-text-box {
+        min-height: 250px;
+    }
+    split-container-text-box > p {
+        font-size: 30px;
+    }
+    phone-header {
+        display: flex;
+    }
+    off-screen-menu {
+        display: flex;
+    }
+    header, footer {
+        display: none;
+    }
+    main {
+        padding-bottom: 100px;
+    }
 }
