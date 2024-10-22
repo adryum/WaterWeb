@@ -10,11 +10,70 @@ export function removeSelectedCard() {
     console.log(selectedCard.hasChildNodes());
 }
 
+export function createCardWithImage(tagName, id, imgPath) {
+    let card = document.createElement(tagName);
+    card.id = id;
+    let image = document.createElement('img');
+    image.src = imgPath;
+
+    card.appendChild(image);
+    return card;
+}
+
+export function addFieldFunctionalityToCard(cardElement) {
+    if (cardElement == undefined) {
+        console.error('No card element provided: ' + cardElement);
+        return;
+    }
+
+    cardElement.addEventListener('click', () => {
+        console.log(selectedCard.id)
+        if (selectedCard.id != '') { // no id == '' <-- empty 
+            let fightersId = cardElement.id; // e.g. DIA3
+            let fighterCard = Cards[fightersId]; 
+            let defenderCard = Cards[selectedCard.id];
+           
+            // Adds them to killed card pile
+        
+            if (
+                (fighterCard['TYPE'] == defenderCard['TYPE'] && fighterCard['STRENGTH'] < defenderCard['STRENGTH']) ||
+                (defenderCard['TYPE'] == trump['TYPE'] && fighterCard['TYPE'] != trump['TYPE'])
+            ) {
+                // Card is killed
+                // adds dead card bodies to body pile
+                deadFighterCards.appendChild(createCardWithImage('fighter', fighterCard, fighterCard['IMAGE']));
+                deadDefenderCards.appendChild(createCardWithImage('fighter', defenderCard, defenderCard['IMAGE']));
+    
+                // removes both cards
+                fighterCards.removeChild(document.querySelector(`fighter#${fightersId}`));
+                Player.object.playACard(selectedCard.id); // Discards card from his hand
+                removeSelectedCard();
+    
+                console.log('combaat wictory');
+            
+            } else {
+                selectedCard.animate(
+                    [
+                        {transform: 'rotateZ(0deg)'},
+                        {transform: 'rotateZ(5deg)'},
+                        {transform: 'rotateZ(-5deg)'},
+                        {transform: 'rotateZ(0deg)'}
+                    ],
+                    {
+                        duration: 200,
+                        iterations: 1
+                    }
+                );
+            }
+        }
+    });
+}
+
 export let playerHand = document.querySelector('player-hand-cards');
 export let selectedCard = document.querySelector('selected-card');
+export let fighterCards = document.querySelector('fighter-cards');
 let deadFighterCards = document.querySelector('dead-fighter');
 let deadDefenderCards = document.querySelector('dead-defender');
-let cardArena = document.querySelector('fighter-cards');
 
 let gameStarted = false;
 let boardCloseUp = false;
@@ -67,58 +126,14 @@ document.querySelector('start-game').addEventListener('click', () => {
     }
     console.log(gameStarted);
 });
-
-let singleFighterCard = document.querySelector('fighter');
-singleFighterCard.addEventListener('click', () => {
-    console.log(selectedCard.id)
-    if (selectedCard.id != '') { // no id == '' <-- empty 
-        let fightersId = singleFighterCard.id; // e.g. DIA3
-        let fighterCard = Cards[fightersId]; 
-        let defenderCard = Cards[selectedCard.id];
-       
-        // Adds them to killed card pile
-    
-        if (
-            (fighterCard['TYPE'] == defenderCard['TYPE'] && fighterCard['STRENGTH'] < defenderCard['STRENGTH']) ||
-            (defenderCard['TYPE'] == trump['TYPE'] && fighterCard['TYPE'] != trump['TYPE'])
-        ) {
-            // Card is killed
-            // adds dead card bodies to body pile
-            deadFighterCards.appendChild(createCardWithImage('fighter', fighterCard['IMAGE']));
-            deadDefenderCards.appendChild(createCardWithImage('fighter', defenderCard['IMAGE']));
-
-            // removes both cards
-            cardArena.removeChild(document.querySelector(`fighter#${fightersId}`));
-            Player.object.playACard(selectedCard.id); // Discards card from his hand
-            removeSelectedCard();
-
-            console.log('normal combaat wictory');
-        
-        } else {
-            selectedCard.animate(
-                [
-                    {transform: 'rotateZ(0deg)'},
-                    {transform: 'rotateZ(5deg)'},
-                    {transform: 'rotateZ(-5deg)'},
-                    {transform: 'rotateZ(0deg)'}
-                ],
-                {
-                    duration: 200,
-                    iterations: 1
-                }
-            );
-        }
-    }
+document.querySelector('pull-cards').addEventListener('click', () => {
+    CardStack.object.placeOnTable(5);
 });
 
-function createCardWithImage(tagName, imgPath) {
-    let card = document.createElement(tagName);
-    let image = document.createElement('img');
-    image.src = imgPath;
+document.querySelector('force-take-card').addEventListener('click', () => {
+    Player.object.forceTakeCard();
+});
 
-    card.appendChild(image);
-    return card;
-}
 
 // console.log(Cards["DIA2"]) !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 

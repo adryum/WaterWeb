@@ -25,6 +25,25 @@ hud {
     width: 100%;
     height: 100%;
 }
+hud > * {
+    height: 100%;
+    width: 200px;
+    font-size: 30px;
+    align-items: center;
+    justify-content: center;
+}
+start-game {
+    display: flex;
+    background-color: aquamarine;
+}
+pull-cards {
+    display: flex;
+    background-color: cyan;
+}
+force-take-card {
+    display: flex;
+    background-color: orange;
+}
 cards-on-the-field {
     position: absolute;
     display: flex;
@@ -64,18 +83,6 @@ main {
     flex: 1;
     display: flex;
     z-index: -10;
-}
-start-game {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    font-size: 30px;
-
-    width: 100px;
-    height: 100%;
-
-    background-color: aquamarine;
 }
 /* Card field */
 battle-grid {
@@ -172,13 +179,11 @@ player-hand-cards {
     position: absolute;
 
     width: 80vw;
-    height: 20vw;
+    height: 14vw;
 
-    flex-wrap: nowrap;
-    overflow: visible scroll;
-
-    bottom: -250px;
+    justify-content: space-around;
     
+    bottom: -250px;
     /* Centers on x axis */
     left: 50%;
     transform: translate(-50%);
@@ -195,20 +200,16 @@ hand-card {
 
     font-size: 100px;
 
-    width: 300px;
-    height: 100%;
+    width: 3px;
+    height: 5px;
 
     bottom: 0;
-    background: rgb(23,23,23);
-    transition: .5s;
+    transition: .4s;
+    transform: scale(100.0);
 }
 player-hand-cards > hand-card:hover {
     bottom: 90px;
     background-color: aquamarine;
-}
-hand-card > img {
-    width: inherit;
-    height: inherit;
 }
 card-deck {
     position: absolute;

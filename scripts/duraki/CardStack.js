@@ -1,4 +1,5 @@
 import { Cards } from "./Cards.js"
+import { fighterCards, createCardWithImage, addFieldFunctionalityToCard } from "./Duraki.js"
 
 export class CardStack {
     static object = new CardStack();
@@ -9,6 +10,17 @@ export class CardStack {
             this.cardStack.push(card);
         }
         this.shuffle();
+    }
+
+    placeOnTable(cardAmount) {
+        console.log("Placing cards on the table...");
+
+        for(let i = cardAmount; i > 0; i--) {
+            let cardId = this.dealACard(); // e.g. DIA3
+            let card = createCardWithImage('fighter', cardId, Cards[cardId]['IMAGE']);
+            addFieldFunctionalityToCard(card);
+            fighterCards.appendChild(card);
+        }
     }
 
     shuffle() {
