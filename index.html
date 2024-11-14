@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>WaterTemperature</title>
-    <link href="styles\IndexStyle.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
 
     <link crossorigin="" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
           integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
@@ -16,58 +16,40 @@
 </head>
 <body>
 <header>
-    <script src="/scripts/reusablesLoder/LoadHeader.js"></script>
 </header>
 <main>
-    <content-container>
-        <informational-hud> <!-- ------------ -->
-            <map-hud>
-                <div class="title">Latvia's Map</div>
-                <div class="hud-button">Button</div>
-                <div class="hud-button">Button</div>
-            </map-hud>
-            <sidebar-hud>
-                <div class="hud-button">Comments</div>
-                <div class="hud-button">Leaderboard</div>
-            </sidebar-hud>
-        </informational-hud>
-        <second-container>
-            <map-container id="map"><!-- |==========|     | -->
-                <div id="map"></div>
-
-
-            </map-container>
-            <right-sidebar><!-- |          |=====| -->
-                chose a place
-            </right-sidebar>
-        </second-container>
-    </content-container>
+    <div class="card-container">
+        <!--    Supports only 4 children    -->
+        <div class="card">
+            <a class="whole-card-link" href="pages/WaterMap.html"></a>
+            <div class="card-header">Map</div>
+            <div class="card-footer">Temperature map</div>
+            <img alt="cliffs" class="card-image" src="images/beautiful-horizontal/cliffs.jpg">
+        </div>
+        <div class="card">
+            <a class="whole-card-link" href="pages/Duraki.html"></a>
+            <div class="card-header">Games</div>
+            <div class="card-footer">Some wonky games that I've made :)</div>
+            <img alt="deer" class="card-image" src="images/beautiful-horizontal/deer-big.jpg">
+        </div>
+        <div class="card">
+            <a class="whole-card-link" href="pages/About.html"></a>
+            <div class="card-header">About me</div>
+            <div class="card-footer">Who am I? What have I made? What do I do?</div>
+            <img alt="narvesens" class="card-image" src="images/beautiful-horizontal/narvesens.jpg">
+        </div>
+        <div class="card">
+            <a class="whole-card-link" href="pages/Contact.html"></a>
+            <div class="card-header">Contact me</div>
+            <div class="card-footer">Call me 😏</div>
+            <img alt="tower" class="card-image" src="images/beautiful-horizontal/tower.jpg">
+        </div>
+    </div>
 </main>
 <footer>
-    <h3>SMTH about copyright and year...</h3>
-    <h3>Everything on this site is very great and functional, so don't bother finding stuff</h3>
-    <h3>Comunity apps - Tiktok, Instagram, Facebook</h3>
 </footer>
-<phone-header>
-    <dark-mode></dark-mode>
-    <input placeholder="search..." type="text">
-    <img class="hamburger-toggle" src="/images/Ic_hamburger.png">
-</phone-header>
-<off-screen-menu>
-    <a href="index.html">WaterBodyTemperatures</a>
-    <navigation-options>
-        <a href="pages/Merch.html">Merch</a>
-        <div class="dropdown">Games
-            <dropdown-block>
-                <div>Duraki<a href="pages/Duraki.html"></a></div>
-                <div>Šahs<a href="pages/Duraki.html"></a></div>
-            </dropdown-block>
-        </div>
-        <a href="pages/About.html">About</a>
-        <a href="pages/Contact.html">Contact</a>
-    </navigation-options>
-</off-screen-menu>
 </body>
-<script src="scripts/LocationMap.js" type="module"></script>
-<script src="scripts/Index.js"></script>
+<!--<script src="scripts/LocationMap.js" type="module"></script>-->
+<!--<script src="scripts/Index.js"></script>-->
+<!--<script src="/scripts/reusableElementLoader/LoadHeader.js"></script>-->
 </html>

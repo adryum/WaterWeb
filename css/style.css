@@ -1,0 +1,194 @@
+* {
+    margin: 0;
+}
+
+:root {
+    --border-radiuss: 40px;
+    --card-move-units: 11%;
+}
+
+html {
+    display: flex;
+    height: 100vh;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+
+    font-family: Arial, Helvetica, sans-serif;
+    flex: 1;
+
+    background: #292828;
+}
+
+main {
+    display: flex;
+    flex: 10;
+
+    align-items: center;
+    justify-content: center;
+}
+
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 10px;
+
+
+    width: 40vw;
+    height: 40vw;
+
+    padding: 30px;
+    background: #201f1f;
+    border-radius: 50px;
+}
+
+.card-container:has(.card:hover) > .card:not(.card:hover) {
+    scale: 0.9;
+}
+
+/* ~ is sibling selector which targets **ALL** siblings below selected one*/
+/* first card */
+.card:nth-child(1):hover ~ .card:nth-child(2) {
+    transform: translateY(var(--card-move-units));
+}
+
+.card:nth-child(1):hover ~ .card:nth-child(3) {
+    transform: translateX(var(--card-move-units));
+}
+
+/* second card */
+.card:nth-child(1):has(+ .card:hover) {
+    transform: translateY(var(--card-move-units));
+}
+
+.card:nth-child(2):hover ~ .card:nth-child(4) {
+    transform: translateX(-11%);
+}
+
+/* third card */
+.card:nth-child(1):has(~ .card:nth-child(3):hover) {
+    transform: translateX(var(--card-move-units));
+}
+
+.card:nth-child(3):hover ~ .card:nth-child(4) {
+    transform: translateY(-11%);
+}
+
+/* fourth card */
+/* if the card classes 2nd child has a 4th sibling(same class under the same parent)
+   which is being hovered, then change the 2nd child */
+.card:nth-child(2):has(~ .card:nth-child(4):hover) {
+    transform: translateX(-11%);
+}
+
+.card:nth-child(3):has(~ .card:nth-child(4):hover) {
+    transform: translateY(-11%);
+}
+
+/* border radius */
+.card:nth-child(1) {
+    border-top-left-radius: var(--border-radiuss);
+}
+
+.card:nth-child(2) {
+    border-top-right-radius: var(--border-radiuss);
+}
+
+.card:nth-child(3) {
+    border-bottom-left-radius: var(--border-radiuss);
+}
+
+.card:nth-child(4) {
+    border-bottom-right-radius: var(--border-radiuss);
+}
+
+.card:nth-child(1):hover {
+    border-radius: var(--border-radiuss) var(--border-radiuss) 0 var(--border-radiuss);
+}
+
+.card:nth-child(2):hover {
+    border-radius: var(--border-radiuss) var(--border-radiuss) var(--border-radiuss) 0;
+}
+
+.card:nth-child(3):hover {
+    border-radius: var(--border-radiuss) 0 var(--border-radiuss) var(--border-radiuss);
+}
+
+.card:nth-child(4):hover {
+    border-radius: 0 var(--border-radiuss) var(--border-radiuss) var(--border-radiuss);
+}
+
+.card {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    transition: .5s ease;
+}
+
+.card:hover {
+    scale: 1.1;
+    z-index: 2;
+}
+
+.card:hover > .card-header {
+    top: 0;
+}
+
+.card:hover > .card-footer {
+    bottom: 5%;
+}
+
+.card-header, .card-footer {
+    position: absolute;
+    display: flex;
+    width: 100%;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    z-index: 1;
+    color: white;
+}
+
+.card-header {
+    top: -20%;
+    font-size: 4rem;
+    transition: .7s ease;
+}
+
+.card-footer {
+    bottom: -100%;
+    font-size: 2.5rem;
+    transition: 1.5s ease-out;
+}
+
+.card-image {
+    position: absolute;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+
+    transition: 1.2s ease;
+}
+
+.card:hover .card-image {
+    scale: 1.2;
+    filter: blur(0.1rem) brightness(70%);
+}
+
+.whole-card-link {
+    /* This should be with highest z-index from all other elements, so it stays above them */
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    z-index: 10;
+}

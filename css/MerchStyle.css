@@ -1,0 +1,441 @@
+* { /* star means to all elements */
+    margin: 0;
+}
+
+:root { /* here are all global variables */
+    --merch-item-border-radiuss: 24px;
+    --body-color: ;
+    --html-color: ;
+    --header-color: rgb(113, 201, 206);
+    --main-color: rgb(227, 253, 253);
+    --footer-color: rgb(113, 201, 206);
+    --gamburger-color: rgb(113, 201, 206);
+    --other-color: rgb(234, 216, 177);
+    --text-color: rgb(0, 0, 0);
+    /* rgb(166, 227, 233) */
+}
+
+.dark-mode {
+    min-width: 120px;
+    min-height: 120px;
+}
+
+#modal {
+    display: none;
+    position: fixed;
+    width: 60%;
+    height: 80%;
+    gap: 20px;
+    padding: 28px;
+
+    box-sizing: border-box;
+
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 40px;
+    color: black;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 1px 40px rgba(0, 0, 0, 90);
+    border-radius: 18px;
+    transition: 0.3s;
+    z-index: 1000;
+}
+
+#modal-title {
+    position: absolute;
+    top: 0;
+}
+
+#modal-description {
+    width: 100%;
+    height: 40%;
+}
+
+#modal-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    width: 80px;
+    height: 80px;
+}
+
+.learn-more {
+    width: 70px;
+    height: 70px;
+
+    margin: 12px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.box-content {
+    display: none;
+}
+
+/* merch category stuff */
+#pc-toggle-sidebar {
+    position: absolute;
+    top: 1;
+    right: -100px;
+    width: 100px;
+    height: 100px;
+
+    z-index: 10;
+}
+
+#sidebar {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-items: left;
+
+    min-height: 100%;
+    min-width: 300px;
+
+    padding: 20px;
+    gap: 5px;
+
+    color: var(--text-color);
+    background: var(--gamburger-color);
+}
+
+.merch-category-button {
+    min-width: 100%;
+    font-size: 28px;
+    transition: 0.3s;
+
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.merch-category-button:hover {
+    color: var(--other-color);
+    backdrop-filter: Brightness(90%);
+}
+
+.merch-subcategory {
+    display: none;
+    position: relative;
+}
+
+.merch-subcategory a {
+    /* to remove all css from children */
+    text-decoration: none;
+    color: var(--text-color)
+}
+
+.dropdown {
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdown:hover .merch-subcategory {
+    display: flex;
+    flex-direction: column;
+
+    text-decoration: none;
+}
+
+.sidebar a:hover {
+    backdrop-filter: brightness(80%);
+}
+
+#sidebar-search {
+    width: 95%;
+    height: 50px;
+    border-radius: 8px;
+}
+
+
+/* center stuff */
+.title {
+    font-size: 64px;
+    color: var(--other-color);
+}
+
+.center-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.flex-grid {
+    /* content position */
+    display: flex;
+    justify-content: center; /* centers horizontally */
+    align-items: center; /* aligns each individually */
+    align-content: center; /* aligns all to the same axis */
+    gap: 20px;
+
+    /* special properties */
+    flex-wrap: wrap; /* allows content (buxes) to wrap when resized or overflowing */
+
+    /* other */
+    min-height: 80%;
+    padding: 20px;
+}
+
+.box {
+    /* decor */
+    width: 350px;
+    height: 400px;
+    background: var(--other-color);
+    font-size: 32px;
+
+    /* position in the box */
+    display: flex;
+    position: relative; /* is counted in composition and can be offcentered */
+    justify-content: center; /* centers horizontally */
+    align-items: center; /* centers vertically */
+    flex-direction: column; /* how content inside will be ordered */
+
+    box-shadow: 0px 1px 2px black;
+
+
+    /* special */
+    transition: 0.3s;
+    border-radius: var(--merch-item-border-radiuss);
+}
+
+.box:hover {
+    scale: 1.1;
+    z-index: 3; /* makes em move above others */
+    box-shadow: 100px 100px 10px rgba(0, 0, 0, 0.252);
+}
+
+/* stuff in the box */
+.item-image {
+    /* fits image in the box */
+    width: 100%;
+    height: 100%;
+
+    border-radius: var(--merch-item-border-radiuss);
+}
+
+.buttons {
+    display: flex;
+    justify-content: center; /* centers horizontally */
+    align-items: center; /* centers vertically */
+
+    position: absolute; /* isn't counted in composition and looks back on parrent with absolute or relative position */
+    width: 100%;
+    height: 100%;
+
+    /* special */
+    opacity: 0;
+    transition: 0.3s;
+    border-radius: var(--merch-item-border-radiuss);
+}
+
+.buttons:hover {
+    /* backdrop-filter: brightness(90%) ; */
+    opacity: 1;
+}
+
+.favorite {
+    width: 30px;
+    height: 30px;
+
+    margin: 12px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.purchase {
+    width: 150px;
+    height: 40px;
+
+    margin: 8px;
+    position: absolute;
+    bottom: 0;
+}
+
+/* headder stuff */
+.pc-view {
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+
+    font-family: sans-serif;
+    font-size: 36px;
+}
+
+img {
+    display: block;
+}
+
+.header-item {
+    height: 150px;
+}
+
+.categories {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+
+    width: 100%;
+}
+
+.category-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+
+    list-style: none;
+    text-decoration: none;
+    transition: 0.3s;
+    color: rgb(255, 255, 255);
+}
+
+.category-item:hover {
+    color: rgb(206, 170, 229);
+    backdrop-filter: brightness(80%);
+}
+
+.shoppingcart {
+    width: 150px;
+    height: 150px;
+}
+
+.phone-view {
+    display: none;
+    align-items: center;
+}
+
+.phone-view #searchbox {
+    width: 100%;
+    min-height: 80px;
+    margin: 12px;
+    border-radius: 16px;
+}
+
+.phone-view .gamburger-checkbox {
+    position: relative;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+
+    min-width: 150px;
+    min-height: 150px;
+    background-color: var(--gamburger-color);
+    z-index: 100;
+}
+
+.phone-view .gamburger-checkbox #real-gamburger-checkbox {
+    position: absolute;
+    width: 100%;
+    min-height: 100%;
+    opacity: 0;
+}
+
+.gamburger-line { /* div-lines to make gamburger icon */
+    height: 15px;
+    width: 80%;
+    border-radius: 7.5px; /* half length for round corners*/
+    background-color: aliceblue;
+}
+
+#phone-sidebar {
+    background: var(--gamburger-color);
+    height: 100vh;
+    width: 100%;
+    max-width: 450px;
+    left: 0;
+    position: fixed;
+    top: 152px; /* places it bellow header */
+    left: -450px;
+
+    filter: brightness(95%);
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    font-size: 3rem;
+    transition: .3s;
+    z-index: 99; /* makes it to stay on top of everything else */
+}
+
+#phone-sidebar a {
+    width: 90%;
+    color: black;
+    list-style: none;
+    text-decoration: none;
+}
+
+#phone-sidebar a:hover {
+    backdrop-filter: brightness(70%);
+}
+
+/* other */
+header {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    max-height: 150px;
+    width: 100%;
+    z-index: 100; /* makes it to stay on top of everything else */
+    background: var(--header-color);
+}
+
+main {
+    margin-top: 150px;
+    display: flex;
+    justify-content: center;
+    max-height: 80%;
+    background: var(--main-color);
+    /* border: 8px solid white; */
+}
+
+body {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    flex-direction: column;
+    background: var(--body-color);
+}
+
+footer {
+    height: 100%;
+    width: 100%;
+    background: var(--footer-color);
+}
+
+html {
+    height: 100%;
+}
+
+/* general/default stuff */
+.hover-brightness:hover {
+    transition: 0.3s;
+    backdrop-filter: brightness(90%);
+}
+
+@media (max-width: 960px) {
+    .pc-view {
+        display: none;
+    }
+
+    #sidebar {
+        display: none;
+    }
+
+    .phone-view {
+        display: flex;
+    }
+}
