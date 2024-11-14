@@ -13,23 +13,114 @@ html {
 }
 
 body {
+    position: relative;
     display: flex;
     flex-direction: column;
+    overflow: hidden; /* allows image to be scalable (zoomed in-out) */
 
     font-family: Arial, Helvetica, sans-serif;
     flex: 1;
+}
 
-    background: #292828;
+.body-image {
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    z-index: -5;
+    scale: 1.5;
+    animation: background-wandering 180s ease infinite;
+    transform: translateX(var(--x-axis-percent)) translateY(var(--y-axis-percent));
+
+}
+
+@property --x-axis-percent {
+    syntax: "<percentage>";
+    inherits: false;
+    initial-value: 10%;
+}
+
+@property --y-axis-percent {
+    syntax: "<percentage>";
+    inherits: false;
+    initial-value: 10%;
+}
+
+@keyframes background-wandering {
+    /* x pos -+15 border
+       y pos -15 +50 border
+    */
+    0% {
+        --x-axis-percent: 15%;
+        --y-axis-percent: -15%;
+    }
+    25% {
+        --y-axis-percent: -10%;
+    }
+    50% {
+        --x-axis-percent: -15%;
+        --y-axis-percent: 15%;
+    }
+    75% {
+        --y-axis-percent: 10%;
+    }
+    100% {
+        --x-axis-percent: 15%;
+        --y-axis-percent: -15%;
+    }
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 6%;
+    width: 100%;
+    background: #121212;
+    color: white;
 }
 
 main {
     display: flex;
     flex: 10;
 
+    gap: 10%;
+
     align-items: center;
     justify-content: center;
 }
 
+
+.side-text {
+    display: flex;
+    flex-direction: column;
+    height: 40vw;
+    width: 30vw;
+
+    gap: 10%;
+
+    align-items: center;
+
+    padding: 30px;
+    background: transparent;
+    box-shadow: 0 0 10px white;
+    backdrop-filter: brightness(80%);
+
+
+    border-radius: 50px;
+    color: white;
+}
+
+.side-text > h1 {
+    font-size: 3rem;
+}
+
+.side-text > p {
+    font-size: 2rem;
+}
 
 .card-container {
     display: grid;
@@ -42,9 +133,14 @@ main {
     height: 40vw;
 
     padding: 30px;
-    background: #201f1f;
+    /*background: #201f1f;*/
+    /*border: 4px solid rgb(60, 60, 60);*/
+
+    background: transparent;
+    backdrop-filter: brightness(80%);
+    box-shadow: 0 0 10px white;
+    /*backdrop-filter: blur(10px);*/
     border-radius: 50px;
-    border: 4px solid rgb(60, 60, 60);
 }
 
 .card-container:has(.card:hover) > .card:not(.card:hover) {
@@ -156,7 +252,7 @@ main {
 
     text-align: center;
 
-    transition: .9s ease;
+    transition: .7s ease;
     z-index: 1;
     color: white;
 }
