@@ -44,6 +44,7 @@ main {
     padding: 30px;
     background: #201f1f;
     border-radius: 50px;
+    border: 4px solid rgb(60, 60, 60);
 }
 
 .card-container:has(.card:hover) > .card:not(.card:hover) {
@@ -134,14 +135,15 @@ main {
 .card:hover {
     scale: 1.1;
     z-index: 2;
+    box-shadow: 0 0 10px 1px rgb(0, 0, 0);
 }
 
 .card:hover > .card-header {
-    top: 0;
+    top: 0 !important;
 }
 
 .card:hover > .card-footer {
-    bottom: 5%;
+    bottom: 5% !important;
 }
 
 .card-header, .card-footer {
@@ -154,20 +156,18 @@ main {
 
     text-align: center;
 
+    transition: .9s ease;
     z-index: 1;
     color: white;
 }
 
 .card-header {
-    top: -20%;
-    font-size: 4rem;
-    transition: .7s ease;
+    font-size: 3.5rem;
 }
 
 .card-footer {
     bottom: -100%;
-    font-size: 2.5rem;
-    transition: 1.5s ease-out;
+    font-size: 2rem;
 }
 
 .card-image {
